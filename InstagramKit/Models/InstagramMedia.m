@@ -187,6 +187,11 @@
 {
     if ((self = [super initWithCoder:decoder])) {
         self.user = [decoder decodeObjectOfClass:[InstagramUser class] forKey:kUser];
+        
+        self.likesCount = [decoder decodeIntegerForKey: @"kLikesCount"];
+        self.commentCount = [decoder decodeIntegerForKey: @"kCommentsCount"];
+
+        
         self.userHasLiked = [decoder decodeBoolForKey:kUserHasLiked];
         self.createdDate = [decoder decodeObjectOfClass:[NSDate class] forKey:kCreatedDate];
         self.link = [decoder decodeObjectOfClass:[NSString class] forKey:kLink];
@@ -231,6 +236,10 @@
     [super encodeWithCoder:encoder];
 
     [encoder encodeObject:self.user forKey:kUser];
+    
+    [encoder encodeInteger:self.likesCount forKey:@"kLikesCount"];
+    [encoder encodeInteger:self.commentCount forKey:@"kCommentsCount"];
+
     [encoder encodeBool:self.userHasLiked forKey:kUserHasLiked];
     [encoder encodeObject:self.createdDate forKey:kCreatedDate];
     [encoder encodeObject:self.link forKey:kLink];
@@ -291,6 +300,10 @@
     copy->_lowResolutionVideoFrameSize = self.lowResolutionVideoFrameSize;
     copy->_standardResolutionVideoURL = [self.standardResolutionVideoURL copy];
     copy->_standardResolutionVideoFrameSize = self.standardResolutionVideoFrameSize;
+    
+    copy.commentCount = self.commentCount;
+    copy.likesCount = self.likesCount;
+    
     return copy;
 }
 

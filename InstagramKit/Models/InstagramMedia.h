@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Number of likes on the Media.
  */
-@property (nonatomic, readonly) NSInteger likesCount;
+@property (nonatomic, assign) NSInteger likesCount;
 
 /**
  *  List of users who have liked the Media.
@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Number of comments on the Media.
  */
-@property (nonatomic, readonly) NSInteger commentCount;
+@property (nonatomic, assign) NSInteger commentCount;
 
 /**
  *  An array of comments on the Media.
